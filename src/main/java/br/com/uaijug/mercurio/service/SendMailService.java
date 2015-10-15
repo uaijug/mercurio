@@ -1,5 +1,6 @@
 package br.com.uaijug.mercurio.service;
 
+import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Date;
 
@@ -20,6 +21,7 @@ import br.com.uaijug.mercurio.model.domain.EventTO;
 import br.com.uaijug.mercurio.model.domain.MailSendLog;
 import br.com.uaijug.mercurio.model.domain.MailTO;
 import br.com.uaijug.mercurio.model.repository.MailSendLogRepository;
+import br.com.uaijug.mercurio.model.to.ActivatedCodeTO;
 
 @Service
 public class SendMailService {
@@ -34,6 +36,9 @@ public class SendMailService {
 
 	@Autowired
 	private MailSendLogRepository mailSendLogRepository;
+	
+	@Autowired
+	private ActivateCodeService activateCodeService;
 
 	public boolean sendHtmlMail(MailTO mailTO) throws MessagingException {
 		boolean send = false;
@@ -63,6 +68,15 @@ public class SendMailService {
 		VelocityContext velocityContext = new VelocityContext();
 		velocityContext.put("name", mailTO.getToName());
 		velocityContext.put("email", mailTO.getTo());
+		ActivatedCodeTO code;
+		try {
+			code = activateCodeService.getActivatedCodeById(4l);
+			mailTO.setActiveCode(code.getCode());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		velocityContext.put("activeCode", mailTO.getActiveCode());
 
 		//[TODO] - Feito especifico para o evento, passar como servido da aplicacao principal
