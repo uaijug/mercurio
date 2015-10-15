@@ -13,7 +13,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @PropertySource("classpath:mail.properties")
 public class MailConfig {
 
-	  @Value("${mail.protocol}")
+	  	@Value("${mail.protocol}")
 	    private String protocol;
 	    @Value("${mail.host}")
 	    private String host;

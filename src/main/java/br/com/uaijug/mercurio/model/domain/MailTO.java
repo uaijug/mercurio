@@ -11,15 +11,6 @@ public class MailTO {
 	private String templateName;
 	private String contentType;
 
-	private String event;
-	private String formLink;
-	private String emailContact;
-	private String linkFacebook;
-	private String linkTwitter;
-	private String linkGoogleplus;
-	private String linkUnsubscribe;
-	private String linkTerms;
-
 	public MailTO() {
 		contentType = "text/html";
 	}
@@ -94,70 +85,6 @@ public class MailTO {
 
 	public void setToName(String toName) {
 		this.toName = toName;
-	}
-
-	public String getEvent() {
-		return event;
-	}
-
-	public void setEvent(String event) {
-		this.event = event;
-	}
-
-	public String getFormLink() {
-		return formLink;
-	}
-
-	public void setFormLink(String formLink) {
-		this.formLink = formLink;
-	}
-
-	public String getEmailContact() {
-		return emailContact;
-	}
-
-	public void setEmailContact(String emailContact) {
-		this.emailContact = emailContact;
-	}
-
-	public String getLinkFacebook() {
-		return linkFacebook;
-	}
-
-	public void setLinkFacebook(String linkFacebook) {
-		this.linkFacebook = linkFacebook;
-	}
-
-	public String getLinkTwitter() {
-		return linkTwitter;
-	}
-
-	public void setLinkTwitter(String linkTwitter) {
-		this.linkTwitter = linkTwitter;
-	}
-
-	public String getLinkGoogleplus() {
-		return linkGoogleplus;
-	}
-
-	public void setLinkGoogleplus(String linkGoogleplus) {
-		this.linkGoogleplus = linkGoogleplus;
-	}
-
-	public String getLinkUnsubscribe() {
-		return linkUnsubscribe;
-	}
-
-	public void setLinkUnsubscribe(String linkUnsubscribe) {
-		this.linkUnsubscribe = linkUnsubscribe;
-	}
-
-	public String getLinkTerms() {
-		return linkTerms;
-	}
-
-	public void setLinkTerms(String linkTerms) {
-		this.linkTerms = linkTerms;
 	}
 
 }

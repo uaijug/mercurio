@@ -16,6 +16,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import br.com.uaijug.mercurio.model.domain.EventTO;
 import br.com.uaijug.mercurio.model.domain.MailSendLog;
 import br.com.uaijug.mercurio.model.domain.MailTO;
 import br.com.uaijug.mercurio.model.repository.MailSendLogRepository;
@@ -64,14 +65,25 @@ public class SendMailService {
 		velocityContext.put("email", mailTO.getTo());
 		velocityContext.put("activeCode", mailTO.getActiveCode());
 
-		velocityContext.put("event", mailTO.getEvent());
-		velocityContext.put("form_link", mailTO.getFormLink());
-		velocityContext.put("email_contact", mailTO.getEmailContact());
-		velocityContext.put("link_facebook", mailTO.getLinkFacebook());
-		velocityContext.put("link_twitter", mailTO.getLinkTwitter());
-		velocityContext.put("link_googleplus", mailTO.getLinkGoogleplus());
-		velocityContext.put("link_unsubscribe", mailTO.getLinkUnsubscribe());
-		velocityContext.put("link_terms", mailTO.getLinkTerms());
+		//[TODO] - Feito especifico para o evento, passar como servido da aplicacao principal
+		EventTO eventTO = new EventTO();
+		eventTO.setEvent("Facom tech week");
+		eventTO.setFormLink("http://www.facomtechweek.com.br/#event-days");
+		eventTO.setEmailContact("uaijug@gmail.com");
+		eventTO.setLinkFacebook("uaijug.uaijug");
+		eventTO.setLinkTwitter("uaijug");
+		eventTO.setLinkGoogleplus("uaijug");
+		eventTO.setLinkUnsubscribe("#");
+		eventTO.setLinkTerms("#");
+		
+		velocityContext.put("event", eventTO.getEvent());
+		velocityContext.put("form_link", eventTO.getFormLink());
+		velocityContext.put("email_contact", eventTO.getEmailContact());
+		velocityContext.put("link_facebook", eventTO.getLinkFacebook());
+		velocityContext.put("link_twitter", eventTO.getLinkTwitter());
+		velocityContext.put("link_googleplus", eventTO.getLinkGoogleplus());
+		velocityContext.put("link_unsubscribe", eventTO.getLinkUnsubscribe());
+		velocityContext.put("link_terms", eventTO.getLinkTerms());
 
 		StringWriter stringWriter = new StringWriter();
 

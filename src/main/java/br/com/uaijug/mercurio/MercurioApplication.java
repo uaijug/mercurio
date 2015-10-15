@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import br.com.uaijug.mercurio.model.domain.Account;
 import br.com.uaijug.mercurio.model.repository.AccountRepository;
 
 @SpringBootApplication
@@ -22,7 +21,7 @@ public class MercurioApplication {
 
 			@Override
 			public void run(String... arg0) throws Exception {
-				accountRepository.save(new Account("root", "root"));
+				//accountRepository.save(new Account("root", "root"));
 			}
 
 		};
